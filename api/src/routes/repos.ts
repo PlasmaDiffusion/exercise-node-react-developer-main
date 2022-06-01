@@ -22,7 +22,6 @@ repos.get('/', async (_: Request, res: Response) => {
   await axios
     .get('https://api.github.com/users/silverorange/repos')
     .then((response: { data: any }) => {
-
       const gitHubData: Repo[] = response.data;
       const mergedData = [...gitHubData, ...fileData];
       res.status(200).json(filterOutForks(mergedData));

@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 
 import './App.css';
+import RepoList from './components/RepoList';
 
 export function App() {
   return (
@@ -19,6 +20,9 @@ export function App() {
         >
           Learn React
         </a>
+        <p>
+          <RepoList />
+        </p>
       </header>
     </div>
   );
