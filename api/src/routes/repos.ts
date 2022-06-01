@@ -17,6 +17,7 @@ repos.get('/', async (_: Request, res: Response) => {
     fileData = JSON.parse(data);
   });
 
+  //After getting data from the file, get it from the github api, then combine and filter it.
   await axios
     .get('https://api.github.com/users/silverorange/repos')
     .then((response: { data: any }) => {
