@@ -3,8 +3,11 @@ import axios from 'axios';
 import { Repo } from '../interfaces/Repo';
 import RepoDetails from './RepoDetails';
 
+import styles from './styles.module.scss';
+
 function RepoList() {
   const [repos, setRepos] = useState<Repo[]>([]);
+  const [repoSelected, setRepoSelected] = useState(-1);
 
   useEffect(() => {
     axios
@@ -20,10 +23,22 @@ function RepoList() {
   }, []);
 
   return (
+    //Render every repo as a button OR if one is clicked, render that button
     <>
-      {repos.map((repo) => (
+      {repos.map((repo, index) => (
         <>
-          <RepoDetails repo={repo} />
+          {(repoSelected === index || repoSelected === -1) && (
+            <button
+              type="button"
+              key={repo.name}
+              className={styles.repo}
+              onClick={() => {
+                setRepoSelected(index);
+              }}
+            >
+              <RepoDetails repo={repo} selected={repoSelected === index} />
+            </button>
+          )}
         </>
       ))}
     </>
