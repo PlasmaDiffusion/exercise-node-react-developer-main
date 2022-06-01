@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Repo } from '../interfaces/Repo';
+import RepoDetails from './RepoDetails';
 
 function RepoList() {
-  const [repos, setRepos] = useState<any[]>([]);
+  const [repos, setRepos] = useState<Repo[]>([]);
 
   useEffect(() => {
     axios
@@ -19,12 +21,9 @@ function RepoList() {
 
   return (
     <>
-      {repos.map((repo, index) => (
+      {repos.map((repo) => (
         <>
-          <h3>{repo.name}</h3>
-          <p>{repo.description}</p>
-          <p>{repo.language}</p>
-          <p>Forks: {repo.forks_count}</p>
+          <RepoDetails repo={repo} />
         </>
       ))}
     </>
