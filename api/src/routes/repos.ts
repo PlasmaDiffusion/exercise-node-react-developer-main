@@ -10,11 +10,13 @@ repos.get('/', async (_: Request, res: Response) => {
 
   res.status(200);
 
+  let fileData: Repo[];
+
   fs.readFile('data/repos.json', (err: any, data: any) => {
     if (err) {
       throw err;
     }
-    const repo = JSON.parse(data);
+    fileData = JSON.parse(data);
     // console.log(repo);
   });
 
@@ -23,27 +25,26 @@ repos.get('/', async (_: Request, res: Response) => {
     .then((response: { data: any }) => {
       // console.log(response.data);
       const gitHubData: Repo[] = response.data;
-      filterOutNoForks(gitHubData);
+      res.status(200).json(filterOutForks(gitHubData));
     })
     .catch((err: any) => {
       res.status(500).json({ message: err });
     });
-
-  // TODO: See README.md Task (A). Return repo data here. You’ve got this!
-  res.json([]);
 });
 
-function filterOutNoForks(data: Repo[]) {
-
-  let returnData: Repo[] = [];
+function filterOutForks(data: Repo[]) {
+  const returnData: Repo[] = [];
 
   for (let i = 0; i < data.length; i++) {
     for (const key in data[i]) {
-      // console.log(key);
       if (key === 'fork') {
-        console.log("fork", data[i][key]);
+        if (!data[i][key]) {
+          returnData.push(data[i]);
+        }
+        continue;
       }
     }
   }
 
+  return returnData;
 }
