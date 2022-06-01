@@ -13,3 +13,14 @@
     }
 }
 
+.back {
+    font-size: 1rem;
+
+    width: 10rem;
+    color:white;
+    background-color: inherit;
+
+        &:hover{
+        background-color: rgb(63, 63, 63);
+    }
+}

@@ -25,6 +25,16 @@ function RepoList() {
   return (
     //Render every repo as a button OR if one is clicked, render that button
     <>
+      {repoSelected !== -1 && (
+        <button
+          onClick={() => {
+            setRepoSelected(-1);
+          }}
+          className={styles.back}
+        >
+          Back
+        </button>
+      )}
       {repos.map((repo, index) => (
         <>
           {(repoSelected === index || repoSelected === -1) && (
