@@ -26,7 +26,7 @@ function RepoList() {
         setFiltered([...filterArray]);
       })
       .catch((err) => {
-        // Just reload the page if there's an error
+        // For now just reload the page if there's an error to try again
         console.log(err);
         window.location.reload();
       });
