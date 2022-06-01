@@ -12,7 +12,6 @@ function RepoDetails({ repo, selected = false }: Props) {
       <p>{repo.description}</p>
       <p>{repo.language}</p>
       <p>Forks: {repo.forks_count}</p>
-
       {selected && <p>{repo.commits_url}</p>}
     </>
   );

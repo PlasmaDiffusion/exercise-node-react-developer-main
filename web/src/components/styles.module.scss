@@ -1,26 +1,35 @@
-.repo
-{
-    font-size: 1rem;
-    margin-top: 3rem;
-    width: 800px;
-    border: 2px solid black;
+.repo {
+  font-size: 1rem;
+  margin-top: 3rem;
+  width: 800px;
+  border: 2px solid black;
 
-    color:white;
-    background-color: inherit;
+  color: white;
+  background-color: inherit;
 
-    &:hover{
-        background-color: rgb(63, 63, 63);
-    }
+  &:hover {
+    background-color: rgb(63, 63, 63);
+  }
 }
 
 .back {
-    font-size: 1rem;
+  font-size: 1rem;
 
-    width: 10rem;
-    color:white;
-    background-color: inherit;
+  width: 10rem;
+  color: white;
+  background-color: rgb(142, 120, 120);
 
-        &:hover{
-        background-color: rgb(63, 63, 63);
+  &:hover {
+    background-color: rgb(87, 74, 74);
+}
+}
+
+.filters {
+  button {
+    color: white;
+    background-color: rgb(142, 120, 120);
+    &:hover{
+        background-color: rgb(87, 74, 74);
     }
+  }
 }
