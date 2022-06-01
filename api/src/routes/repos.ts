@@ -17,15 +17,17 @@ repos.get('/', async (_: Request, res: Response) => {
       throw err;
     }
     fileData = JSON.parse(data);
-    // console.log(repo);
+    // console.log(fileData);
   });
 
   await axios
     .get('https://api.github.com/users/silverorange/repos')
     .then((response: { data: any }) => {
       // console.log(response.data);
+
       const gitHubData: Repo[] = response.data;
-      res.status(200).json(filterOutForks(gitHubData));
+      const mergedData = [...gitHubData, ...fileData];
+      res.status(200).json(filterOutForks(mergedData));
     })
     .catch((err: any) => {
       res.status(500).json({ message: err });
